@@ -3,7 +3,7 @@ package omnilayer
 import (
 	"encoding/json"
 
-	"github.com/ibclabs/omnilayer-go/omnijson"
+	"github.com/shawn-cx-li/omnilayer-go/omnijson"
 )
 
 type futureCreateRawTransaction chan *response

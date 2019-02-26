@@ -3,7 +3,7 @@ package omnilayer
 import (
 	"encoding/json"
 
-	"github.com/ibclabs/omnilayer-go/omnijson"
+	"github.com/shawn-cx-li/omnilayer-go/omnijson"
 )
 
 type futureOmniCreatePayloadSimpleSend chan *response
@@ -108,6 +108,20 @@ type futureOmniGetBalance chan *response
 
 func (f futureOmniGetBalance) Receive() (omnijson.OmniGetBalanceResult, error) {
 	var result omnijson.OmniGetBalanceResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	err = json.Unmarshal(data, &result)
+	return result, err
+}
+
+type futureGetNewAddress chan *response
+
+func (f futureGetNewAddress) Receive() (omnijson.GetNewAddressResult, error) {
+	var result omnijson.GetNewAddressResult
 
 	data, err := receive(f)
 	if err != nil {
