@@ -96,3 +96,31 @@ func (f futureSignRawTransactionWithKey) Receive() (omnijson.SignRawTransactionW
 	err = json.Unmarshal(data, &result)
 	return result, err
 }
+
+type futureOmniSend chan *response
+
+func (f futureOmniSend) Receive() (omnijson.OmniSendResult, error) {
+	var result omnijson.OmniSendResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	err = json.Unmarshal(data, &result)
+	return result, err
+}
+
+type futureOmniFundedSendall chan *response
+
+func (f futureOmniFundedSendall) Receive() (omnijson.OmniFundedSendallResult, error) {
+	var result omnijson.OmniFundedSendallResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	err = json.Unmarshal(data, &result)
+	return result, err
+}
