@@ -1,8 +1,7 @@
 package omnijson
 
 type GetNewAddressResult = struct {
-	Address  string `json:"address"`
-	Address2 string `json:""`
+	Address string `json:"address"`
 }
 
 type GetNewAddressCommand struct{}

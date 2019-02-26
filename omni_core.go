@@ -128,6 +128,11 @@ func (f futureGetNewAddress) Receive() (omnijson.GetNewAddressResult, error) {
 		return result, err
 	}
 
-	err = json.Unmarshal(data, &result)
+	var address string
+	err = json.Unmarshal(data, &address)
+
+	result = omnijson.GetNewAddressResult{
+		Address: address,
+	}
 	return result, err
 }
