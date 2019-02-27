@@ -32,7 +32,7 @@ func (c *Client) SignRawTransactionWithKey(cmd btcjson.SignRawTransactionWithKey
 	return futureSignRawTransactionWithKey(c.do(cmd)).Receive()
 }
 
-func (c *Client) GetNewAddress() (btcjson.GetNewAddressResult, error) {
+func (c *Client) GetNewAddress() (string, error) {
 	return futureGetNewAddress(c.do(btcjson.GetNewAddressCommand{})).Receive()
 }
 
@@ -40,6 +40,18 @@ func (c *Client) GetTransaction(cmd btcjson.GetTransactionCommand) (btcjson.GetT
 	return futureGetTransaction(c.do(cmd)).Receive()
 }
 
-func (c *Client) GetBalance() (btcjson.GetBalanceResult, error) {
+func (c *Client) GetBalance() (float64, error) {
 	return futureGetBalance(c.do(btcjson.GetBalanceCommand{})).Receive()
+}
+
+func (c *Client) ValidateAddress(cmd btcjson.ValidateAddressCommand) (btcjson.ValidateAddressResult, error) {
+	return futureValidateAddress(c.do(cmd)).Receive()
+}
+
+func (c *Client) SetTxFee(cmd btcjson.SetTxFeeCommand) error {
+	return futureSetTxFee(c.do(cmd)).Receive()
+}
+
+func (c *Client) SendToAddress(cmd btcjson.SendToAddressCommand) (string, error) {
+	return futureSendToAddress(c.do(cmd)).Receive()
 }

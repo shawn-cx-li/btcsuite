@@ -99,20 +99,14 @@ func (f futureSignRawTransactionWithKey) Receive() (btcjson.SignRawTransactionWi
 
 type futureGetNewAddress chan *response
 
-func (f futureGetNewAddress) Receive() (btcjson.GetNewAddressResult, error) {
-	var result btcjson.GetNewAddressResult
-
+func (f futureGetNewAddress) Receive() (string, error) {
+	var result string
 	data, err := receive(f)
 	if err != nil {
 		return result, err
 	}
 
-	var address string
-	err = json.Unmarshal(data, &address)
-
-	result = btcjson.GetNewAddressResult{
-		Address: address,
-	}
+	err = json.Unmarshal(data, &result)
 	return result, err
 }
 
@@ -132,19 +126,52 @@ func (f futureGetTransaction) Receive() (btcjson.GetTransactionResult, error) {
 
 type futureGetBalance chan *response
 
-func (f futureGetBalance) Receive() (btcjson.GetBalanceResult, error) {
-	var result btcjson.GetBalanceResult
+func (f futureGetBalance) Receive() (float64, error) {
+	var result float64
 
 	data, err := receive(f)
 	if err != nil {
 		return result, err
 	}
 
-	var balance float64
-	err = json.Unmarshal(data, &balance)
-
-	result = btcjson.GetBalanceResult{
-		Balance: balance,
-	}
+	err = json.Unmarshal(data, &result)
 	return result, err
+}
+
+type futureValidateAddress chan *response
+
+func (f futureValidateAddress) Receive() (btcjson.ValidateAddressResult, error) {
+	var result btcjson.ValidateAddressResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	err = json.Unmarshal(data, &result)
+	return result, err
+}
+
+type futureSetTxFee chan *response
+
+func (f futureSetTxFee) Receive() error {
+	_, err := receive(f)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+type futureSendToAddress chan *response
+
+func (f futureSendToAddress) Receive() (string, error) {
+	var result string
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	err = json.Unmarshal(data, &result)
+	return result, nil
 }

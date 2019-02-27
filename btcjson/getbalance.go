@@ -1,9 +1,5 @@
 package btcjson
 
-type GetBalanceResult struct {
-	Balance float64
-}
-
 type GetBalanceCommand struct {
 }
 
