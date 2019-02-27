@@ -1,1 +1,1 @@
-module gitlab/sdce/btcsuite
+module gitlab.com/sdce/btcsuite

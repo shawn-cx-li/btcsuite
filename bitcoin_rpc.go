@@ -1,7 +1,7 @@
 package btcsuite
 
 import (
-	"gitlab/sdce/btcsuite/btcjson"
+	"gitlab.com/sdce/btcsuite/btcjson"
 )
 
 func (c *Client) GetBlockChainInfo() (btcjson.GetBlockChainInfoResult, error) {
