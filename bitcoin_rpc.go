@@ -39,3 +39,7 @@ func (c *Client) GetNewAddress() (btcjson.GetNewAddressResult, error) {
 func (c *Client) GetTransaction(cmd btcjson.GetTransactionCommand) (btcjson.GetTransactionResult, error) {
 	return futureGetTransaction(c.do(cmd)).Receive()
 }
+
+func (c *Client) GetBalance() (btcjson.GetBalanceResult, error) {
+	return futureGetBalance(c.do(btcjson.GetBalanceCommand{})).Receive()
+}

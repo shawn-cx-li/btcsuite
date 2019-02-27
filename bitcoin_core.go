@@ -129,3 +129,22 @@ func (f futureGetTransaction) Receive() (btcjson.GetTransactionResult, error) {
 	err = json.Unmarshal(data, &result)
 	return result, err
 }
+
+type futureGetBalance chan *response
+
+func (f futureGetBalance) Receive() (btcjson.GetBalanceResult, error) {
+	var result btcjson.GetBalanceResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	var balance int64
+	err = json.Unmarshal(data, &balance)
+
+	result = btcjson.GetBalanceResult{
+		Balance: balance,
+	}
+	return result, err
+}
