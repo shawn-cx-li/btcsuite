@@ -1,4 +1,4 @@
-package omnilayer
+package btcsuite
 
 import (
 	"encoding/json"

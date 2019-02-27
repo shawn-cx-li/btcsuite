@@ -1,4 +1,4 @@
-package omnijson
+package btcjson
 
 type ImportAddressCommand struct {
 	Adress string

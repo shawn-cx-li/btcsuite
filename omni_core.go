@@ -1,4 +1,4 @@
-package omnilayer
+package btcsuite
 
 import (
 	"encoding/json"
@@ -118,21 +118,30 @@ func (f futureOmniGetBalance) Receive() (omnijson.OmniGetBalanceResult, error) {
 	return result, err
 }
 
-type futureGetNewAddress chan *response
+type futureOmniSend chan *response
 
-func (f futureGetNewAddress) Receive() (omnijson.GetNewAddressResult, error) {
-	var result omnijson.GetNewAddressResult
+func (f futureOmniSend) Receive() (omnijson.OmniSendResult, error) {
+	var result omnijson.OmniSendResult
 
 	data, err := receive(f)
 	if err != nil {
 		return result, err
 	}
 
-	var address string
-	err = json.Unmarshal(data, &address)
+	err = json.Unmarshal(data, &result)
+	return result, err
+}
 
-	result = omnijson.GetNewAddressResult{
-		Address: address,
+type futureOmniFundedSendall chan *response
+
+func (f futureOmniFundedSendall) Receive() (omnijson.OmniFundedSendallResult, error) {
+	var result omnijson.OmniFundedSendallResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
 	}
+
+	err = json.Unmarshal(data, &result)
 	return result, err
 }
