@@ -1,7 +1,7 @@
 package btcsuite
 
 import (
-	"github.com/shawn-cx-li/omnilayer-go/omnijson"
+	"gitlab/sdce/btcsuite/omnijson"
 )
 
 func (c *Client) OmniListBlockTransactions(block int64) (omnijson.OmniListBlockTransactionsResult, error) {
