@@ -140,7 +140,7 @@ func (f futureGetBalance) Receive() (btcjson.GetBalanceResult, error) {
 		return result, err
 	}
 
-	var balance int64
+	var balance float64
 	err = json.Unmarshal(data, &balance)
 
 	result = btcjson.GetBalanceResult{
