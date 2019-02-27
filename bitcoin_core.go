@@ -115,3 +115,17 @@ func (f futureGetNewAddress) Receive() (btcjson.GetNewAddressResult, error) {
 	}
 	return result, err
 }
+
+type futureGetTransaction chan *response
+
+func (f futureGetTransaction) Receive() (btcjson.GetTransactionResult, error) {
+	var result btcjson.GetTransactionResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	err = json.Unmarshal(data, &result)
+	return result, err
+}
