@@ -9,7 +9,7 @@ package omnijson
 */
 
 type OmniGetBalanceResult = struct {
-	Balance  string
+	Balance  float64
 	Reserved string
 	Frozen   string
 }

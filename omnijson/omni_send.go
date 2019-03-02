@@ -1,14 +1,12 @@
 package omnijson
 
-type OmniSendResult struct {
-	Txid string
-}
+type OmniSendResult = string
 
 type OmniSendCommand struct {
 	FromAddress string
 	ToAddress   string
 	PropertyID  int32
-	Amount      string
+	Amount      float64
 }
 
 func (OmniSendCommand) Method() string {

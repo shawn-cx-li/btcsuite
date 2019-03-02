@@ -1,8 +1,6 @@
 package omnijson
 
-type OmniFundedSendallResult struct {
-	Txid string
-}
+type OmniFundedSendallResult = string
 
 type OmniFundedSendallCommand struct {
 	FromAddress string

@@ -40,8 +40,8 @@ func (c *Client) OmniGetBalance(cmd omnijson.OmniGetBalanceCommand) (omnijson.Om
 	return futureOmniGetBalance(c.do(cmd)).Receive()
 }
 
-func (c *Client) OmniGetAllBalancesForId(propertyId int32) (omnijson.OmniGetAllBalancesForIdResult, error) {
-	return futureOmniGetAllBalancesForId(c.do(omnijson.OmniGetAllBalancesForIdCommand{PropertyID: propertyId})).Receive()
+func (c *Client) OmniGetAllBalancesForID(propertyId int32) (omnijson.OmniGetAllBalancesForIdResult, error) {
+	return futureOmniGetAllBalancesForID(c.do(omnijson.OmniGetAllBalancesForIdCommand{PropertyID: propertyId})).Receive()
 }
 
 func (c *Client) OmniSend(cmd omnijson.OmniSendCommand) (omnijson.OmniSendResult, error) {

@@ -1,28 +1,28 @@
 package omnijson
 
-type OmniGetAllBalancesForIdResult = struct {
-	Balances []OmniGetAllBalancesForIdBody
+type OmniGetAllBalancesForIDResult = struct {
+	Balances []OmniGetAllBalancesForIDBody
 }
 
-type OmniGetAllBalancesForIdBody = struct {
+type OmniGetAllBalancesForIDBody = struct {
 	Address  string
-	Balance  string
+	Balance  float64
 	Reserved string
 	Frozen   string
 }
 
-type OmniGetAllBalancesForIdCommand struct {
+type OmniGetAllBalancesForIDCommand struct {
 	PropertyID int32
 }
 
-func (OmniGetAllBalancesForIdCommand) Method() string {
+func (OmniGetAllBalancesForIDCommand) Method() string {
 	return "omni_getallbalancesforid"
 }
 
-func (OmniGetAllBalancesForIdCommand) ID() string {
+func (OmniGetAllBalancesForIDCommand) ID() string {
 	return "1"
 }
 
-func (cmd OmniGetAllBalancesForIdCommand) Params() []interface{} {
+func (cmd OmniGetAllBalancesForIDCommand) Params() []interface{} {
 	return []interface{}{cmd.PropertyID}
 }
