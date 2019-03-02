@@ -121,7 +121,7 @@ func (f futureOmniGetBalance) Receive() (omnijson.OmniGetBalanceResult, error) {
 type futureOmniGetAllBalancesForID chan *response
 
 func (f futureOmniGetAllBalancesForID) Receive() (omnijson.OmniGetAllBalancesForIDResult, error) {
-	var result omnijson.OmniGetAllBalancesForIdResult
+	var result omnijson.OmniGetAllBalancesForIDResult
 
 	data, err := receive(f)
 	if err != nil {
