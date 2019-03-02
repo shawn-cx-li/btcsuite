@@ -118,6 +118,20 @@ func (f futureOmniGetBalance) Receive() (omnijson.OmniGetBalanceResult, error) {
 	return result, err
 }
 
+type futureOmniGetAllBalancesForId chan *response
+
+func (f futureOmniGetAllBalancesForId) Receive() (omnijson.OmniGetAllBalancesForIdResult, error) {
+	var result omnijson.OmniGetAllBalancesForIdResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	err = json.Unmarshal(data, &result)
+	return result, err
+}
+
 type futureOmniSend chan *response
 
 func (f futureOmniSend) Receive() (omnijson.OmniSendResult, error) {
