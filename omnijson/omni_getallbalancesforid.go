@@ -1,14 +1,10 @@
 package omnijson
 
-type OmniGetAllBalancesForIDResult = struct {
-	Balances []OmniGetAllBalancesForIDBody
-}
-
-type OmniGetAllBalancesForIDBody = struct {
-	Address  string
-	Balance  float64
-	Reserved float64
-	Frozen   float64
+type OmniGetAllBalancesForIDResult = []struct {
+	Address  string  `json:address`
+	Balance  float64 `json:balance`
+	Reserved float64 `json:reserved`
+	Frozen   float64 `json:frozen`
 }
 
 type OmniGetAllBalancesForIDCommand struct {
