@@ -12,7 +12,7 @@ type OmniGetAllBalancesForIDBody = struct {
 }
 
 type OmniGetAllBalancesForIDCommand struct {
-	PropertyID int32
+	PropertyID int64
 }
 
 func (OmniGetAllBalancesForIDCommand) Method() string {

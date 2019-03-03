@@ -5,7 +5,7 @@ type OmniFundedSendallResult = string
 type OmniFundedSendallCommand struct {
 	FromAddress string
 	ToAddress   string
-	Ecosystem   int32
+	Ecosystem   int64
 	FeeAddress  string
 }
 

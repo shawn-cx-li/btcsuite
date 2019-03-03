@@ -8,7 +8,7 @@ Result:
 type OmniCreatePayloadSimpleSendResult = string
 
 type OmniCreatePayloadSimpleSendCommand struct {
-	Property int32
+	Property int64
 	Amount   string
 }
 
