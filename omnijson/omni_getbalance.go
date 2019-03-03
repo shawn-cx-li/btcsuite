@@ -10,8 +10,8 @@ package omnijson
 
 type OmniGetBalanceResult = struct {
 	Balance  float64
-	Reserved string
-	Frozen   string
+	Reserved float64
+	Frozen   float64
 }
 
 type OmniGetBalanceCommand struct {

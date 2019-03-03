@@ -7,8 +7,8 @@ type OmniGetAllBalancesForIDResult = struct {
 type OmniGetAllBalancesForIDBody = struct {
 	Address  string
 	Balance  float64
-	Reserved string
-	Frozen   string
+	Reserved float64
+	Frozen   float64
 }
 
 type OmniGetAllBalancesForIDCommand struct {
