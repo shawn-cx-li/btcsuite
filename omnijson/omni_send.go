@@ -6,7 +6,7 @@ type OmniSendCommand struct {
 	FromAddress string
 	ToAddress   string
 	PropertyID  int64
-	Amount      float64
+	Amount      string
 }
 
 func (OmniSendCommand) Method() string {

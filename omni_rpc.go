@@ -36,18 +36,33 @@ func (c *Client) OmniCreateRawTxChange(cmd omnijson.OmniCreateRawTxChangeCommand
 	return futureOmniCreateRawTxChange(c.do(cmd)).Receive()
 }
 
-func (c *Client) OmniGetBalance(cmd omnijson.OmniGetBalanceCommand) (omnijson.OmniGetBalanceResult, error) {
-	return futureOmniGetBalance(c.do(cmd)).Receive()
+func (c *Client) OmniGetBalance(addr string, propertyID int64) (omnijson.OmniGetBalanceResult, error) {
+	return futureOmniGetBalance(c.do(omnijson.OmniGetBalanceCommand{
+		Address:    addr,
+		PropertyID: propertyID,
+	})).Receive()
 }
 
 func (c *Client) OmniGetAllBalancesForID(propertyID int64) (omnijson.OmniGetAllBalancesForIDResult, error) {
-	return futureOmniGetAllBalancesForID(c.do(omnijson.OmniGetAllBalancesForIDCommand{PropertyID: propertyID})).Receive()
+	return futureOmniGetAllBalancesForID(c.do(omnijson.OmniGetAllBalancesForIDCommand{
+		PropertyID: propertyID,
+	})).Receive()
 }
 
-func (c *Client) OmniSend(cmd omnijson.OmniSendCommand) (omnijson.OmniSendResult, error) {
-	return futureOmniSend(c.do(cmd)).Receive()
+func (c *Client) OmniSend(fromAddr, toAddr, amount string, propertyId int64) (omnijson.OmniSendResult, error) {
+	return futureOmniSend(c.do(omnijson.OmniSendCommand{
+		FromAddress: fromAddr,
+		ToAddress:   toAddr,
+		PropertyID:  propertyId,
+		Amount:      amount,
+	})).Receive()
 }
 
-func (c *Client) OmniFundedSendall(cmd omnijson.OmniFundedSendallCommand) (omnijson.OmniFundedSendallResult, error) {
-	return futureOmniFundedSendall(c.do(cmd)).Receive()
+func (c *Client) OmniFundedSendall(fromAddr, toAddr, feeAddr string, ecosystem int64) (omnijson.OmniFundedSendallResult, error) {
+	return futureOmniFundedSendall(c.do(omnijson.OmniFundedSendallCommand{
+		FromAddress: fromAddr,
+		ToAddress:   toAddr,
+		FeeAddress:  feeAddr,
+		Ecosystem:   ecosystem,
+	})).Receive()
 }
