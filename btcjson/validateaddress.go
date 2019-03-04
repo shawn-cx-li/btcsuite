@@ -1,5 +1,9 @@
 package btcjson
 
+type ValidateAddressCommand struct {
+	Address string
+}
+
 type ValidateAddressResult struct {
 	IsValid      bool     `json:"isvalid"`
 	Address      string   `json:"address,omitempty"`
@@ -13,10 +17,6 @@ type ValidateAddressResult struct {
 	Hex          string   `json:"hex,omitempty"`
 	Script       string   `json:"script,omitempty"`
 	SigsRequired int32    `json:"sigsrequired,omitempty"`
-}
-
-type ValidateAddressCommand struct {
-	Address string
 }
 
 func (ValidateAddressCommand) Method() string {

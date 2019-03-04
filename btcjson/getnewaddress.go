@@ -1,6 +1,10 @@
 package btcjson
 
-type GetNewAddressCommand struct{}
+type GetNewAddressCommand struct {
+	Account string
+}
+
+type GetNewAddressResult = string
 
 func (GetNewAddressCommand) Method() string {
 	return "getnewaddress"

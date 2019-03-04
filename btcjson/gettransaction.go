@@ -1,7 +1,7 @@
 package btcjson
 
 type GetTransactionCommand struct {
-	Txid string
+	TxID string
 }
 
 type GetTransactionDetailsResult struct {
@@ -39,5 +39,5 @@ func (GetTransactionCommand) ID() string {
 }
 
 func (cmd GetTransactionCommand) Params() []interface{} {
-	return []interface{}{cmd.Txid}
+	return []interface{}{cmd.TxID}
 }

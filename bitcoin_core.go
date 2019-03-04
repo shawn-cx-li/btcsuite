@@ -99,8 +99,9 @@ func (f futureSignRawTransactionWithKey) Receive() (btcjson.SignRawTransactionWi
 
 type futureGetNewAddress chan *response
 
-func (f futureGetNewAddress) Receive() (string, error) {
-	var result string
+func (f futureGetNewAddress) Receive() (btcjson.GetNewAddressResult, error) {
+	var result btcjson.GetNewAddressResult
+
 	data, err := receive(f)
 	if err != nil {
 		return result, err
@@ -126,8 +127,8 @@ func (f futureGetTransaction) Receive() (btcjson.GetTransactionResult, error) {
 
 type futureGetBalance chan *response
 
-func (f futureGetBalance) Receive() (float64, error) {
-	var result float64
+func (f futureGetBalance) Receive() (btcjson.GetBalanceResult, error) {
+	var result btcjson.GetBalanceResult
 
 	data, err := receive(f)
 	if err != nil {
@@ -164,8 +165,8 @@ func (f futureSetTxFee) Receive() error {
 
 type futureSendToAddress chan *response
 
-func (f futureSendToAddress) Receive() (string, error) {
-	var result string
+func (f futureSendToAddress) Receive() (btcjson.SendToAddressResult, error) {
+	var result btcjson.SendToAddressResult
 
 	data, err := receive(f)
 	if err != nil {

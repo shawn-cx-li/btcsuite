@@ -3,9 +3,11 @@ package btcjson
 type SendToAddressCommand struct {
 	Address   string
 	Amount    float64
-	Comment   *string
-	CommentTo *string
+	Comment   string
+	CommentTo string
 }
+
+type SendToAddressResult = string
 
 func (SendToAddressCommand) Method() string {
 	return "sendtoaddress"

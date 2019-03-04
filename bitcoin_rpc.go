@@ -4,6 +4,54 @@ import (
 	"gitlab.com/sdce/btcsuite/btcjson"
 )
 
+/*
+ * In Use
+ */
+func (c *Client) GetNewAddress(account string) (btcjson.GetNewAddressResult, error) {
+	return futureGetNewAddress(c.do(btcjson.GetNewAddressCommand{
+		Account: account,
+	})).Receive()
+}
+
+func (c *Client) GetTransaction(txid string) (btcjson.GetTransactionResult, error) {
+	return futureGetTransaction(c.do(btcjson.GetTransactionCommand{
+		TxID: txid,
+	})).Receive()
+}
+
+// GetBalance returns the balance of a specific account
+// Use "*" for all account, default minConf is 1
+func (c *Client) GetBalance(account string, minConf int) (btcjson.GetBalanceResult, error) {
+	return futureGetBalance(c.do(btcjson.GetBalanceCommand{
+		Account: account,
+		MinConf: minConf,
+	})).Receive()
+}
+
+func (c *Client) ValidateAddress(addr string) (btcjson.ValidateAddressResult, error) {
+	return futureValidateAddress(c.do(btcjson.ValidateAddressCommand{
+		Address: addr,
+	})).Receive()
+}
+
+func (c *Client) SetTxFee(amt float64) error {
+	return futureSetTxFee(c.do(btcjson.SetTxFeeCommand{
+		Amount: amt,
+	})).Receive()
+}
+
+func (c *Client) SendToAddress(toAddr string, amt float64, comment, commentTo string) (btcjson.SendToAddressResult, error) {
+	return futureSendToAddress(c.do(btcjson.SendToAddressCommand{
+		Address:   toAddr,
+		Amount:    amt,
+		Comment:   comment,
+		CommentTo: commentTo,
+	})).Receive()
+}
+
+/*
+ * Not In Use
+ */
 func (c *Client) GetBlockChainInfo() (btcjson.GetBlockChainInfoResult, error) {
 	return futureGetBlockChainInfo(c.do(btcjson.GetBlockChainInfoCommand{})).Receive()
 }
@@ -30,28 +78,4 @@ func (c *Client) SignRawTransaction(cmd btcjson.SignRawTransactionCommand) (btcj
 
 func (c *Client) SignRawTransactionWithKey(cmd btcjson.SignRawTransactionWithKeyCommand) (btcjson.SignRawTransactionWithKeyResult, error) {
 	return futureSignRawTransactionWithKey(c.do(cmd)).Receive()
-}
-
-func (c *Client) GetNewAddress() (string, error) {
-	return futureGetNewAddress(c.do(btcjson.GetNewAddressCommand{})).Receive()
-}
-
-func (c *Client) GetTransaction(cmd btcjson.GetTransactionCommand) (btcjson.GetTransactionResult, error) {
-	return futureGetTransaction(c.do(cmd)).Receive()
-}
-
-func (c *Client) GetBalance() (float64, error) {
-	return futureGetBalance(c.do(btcjson.GetBalanceCommand{})).Receive()
-}
-
-func (c *Client) ValidateAddress(cmd btcjson.ValidateAddressCommand) (btcjson.ValidateAddressResult, error) {
-	return futureValidateAddress(c.do(cmd)).Receive()
-}
-
-func (c *Client) SetTxFee(cmd btcjson.SetTxFeeCommand) error {
-	return futureSetTxFee(c.do(cmd)).Receive()
-}
-
-func (c *Client) SendToAddress(cmd btcjson.SendToAddressCommand) (string, error) {
-	return futureSendToAddress(c.do(cmd)).Receive()
 }
