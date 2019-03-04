@@ -24,7 +24,7 @@ Result:
 */
 
 type OmniGettransactionResult struct {
-	ID              string `json:"txid"`
+	Txid            string `json:"txid"`
 	Fee             string `json:"fee"`
 	From            string `json:"sendingaddress"`
 	To              string `json:"referenceaddress"`
@@ -35,10 +35,10 @@ type OmniGettransactionResult struct {
 	Version         int32  `json:"version"`
 	TypeInt         int32  `json:"type_int"`
 	PropertyID      int64  `json:"propertyid"`
-	BlockTimestamp  int32  `json:"blocktime"`
+	BlockTimestamp  int64  `json:"blocktime"`
 	PositionInBlock int32  `json:"positioninblock"`
-	BlockHeight     int32  `json:"block"`
-	Confirmations   uint32 `json:"confirmations"`
+	BlockHeight     int64  `json:"block"`
+	Confirmations   int64  `json:"confirmations"`
 	Mine            bool   `json:"ismine"`
 	Divisible       bool   `json:"divisible"`
 	Valid           bool   `json:"valid"`
