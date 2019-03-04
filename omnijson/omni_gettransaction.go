@@ -24,7 +24,7 @@ Result:
 */
 
 type OmniGettransactionResult struct {
-	Txid            string `json:"txid"`
+	TxID            string `json:"txid"`
 	Fee             string `json:"fee"`
 	From            string `json:"sendingaddress"`
 	To              string `json:"referenceaddress"`
