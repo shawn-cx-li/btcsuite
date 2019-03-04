@@ -28,6 +28,7 @@ type GetTransactionResult struct {
 	TimeReceived    int64                         `json:"timereceived"`
 	Details         []GetTransactionDetailsResult `json:"details"`
 	Hex             string                        `json:"hex"`
+	Comment         string                        `json:"comment"`
 }
 
 func (GetTransactionCommand) Method() string {
