@@ -176,3 +176,31 @@ func (f futureSendToAddress) Receive() (btcjson.SendToAddressResult, error) {
 	err = json.Unmarshal(data, &result)
 	return result, nil
 }
+
+type futureEstimateSmartFee chan *response
+
+func (f futureEstimateSmartFee) Receive() (btcjson.EstimateSmartFeeResult, error) {
+	var result btcjson.EstimateSmartFeeResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	err = json.Unmarshal(data, &result)
+	return result, err
+}
+
+type futureEstimateFee chan *response
+
+func (f futureEstimateFee) Receive() (btcjson.EstimateFeeResult, error) {
+	var result btcjson.EstimateFeeResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	err = json.Unmarshal(data, &result)
+	return result, err
+}

@@ -49,6 +49,18 @@ func (c *Client) SendToAddress(toAddr string, amt float64, comment, commentTo st
 	})).Receive()
 }
 
+func (c *Client) EstimateSmartFee(blocks uint32) (btcjson.EstimateSmartFeeResult, error) {
+	return futureEstimateSmartFee(c.do(btcjson.EstimateSmartFeeCommand{
+		Blocks: blocks,
+	})).Receive()
+}
+
+func (c *Client) EstimateFee(blocks uint32) (btcjson.EstimateFeeResult, error) {
+	return futureEstimateFee(c.do(btcjson.EstimateFeeCommand{
+		Blocks: blocks,
+	})).Receive()
+}
+
 /*
  * Not In Use
  */
