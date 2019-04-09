@@ -30,6 +30,10 @@ func (c *Client) OmniGetWalletBalances() (omnijson.OmniGetWalletBalancesResult, 
 	return futrueOmniGetWalletBalances(c.do(omnijson.OmniGetWalletBalancesCommand{})).Receive()
 }
 
+func (c *Client) OmniGetWalletAddressBalances() (omnijson.OmniGetWalletAddressBalancesResult, error) {
+	return futrueOmniGetWalletAddressBalances(c.do(omnijson.OmniGetWalletAddressBalancesCommand{})).Receive()
+}
+
 func (c *Client) OmniSend(fromAddr, toAddr, amount string, propertyId int64) (omnijson.OmniSendResult, error) {
 	return futureOmniSend(c.do(omnijson.OmniSendCommand{
 		FromAddress: fromAddr,
