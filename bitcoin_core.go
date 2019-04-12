@@ -139,6 +139,20 @@ func (f futureGetBalance) Receive() (btcjson.GetBalanceResult, error) {
 	return result, err
 }
 
+type futureGetReceivedByAddress chan *response
+
+func (f futureGetReceivedByAddress) Receive() (btcjson.GetreceivedbyaddressResult, error) {
+	var result btcjson.GetreceivedbyaddressResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	err = json.Unmarshal(data, &result)
+	return result, err
+}
+
 type futureValidateAddress chan *response
 
 func (f futureValidateAddress) Receive() (btcjson.ValidateAddressResult, error) {

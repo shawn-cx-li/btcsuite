@@ -15,6 +15,6 @@ func (GetBalanceCommand) ID() string {
 	return "1"
 }
 
-func (GetBalanceCommand) Params() []interface{} {
-	return nil
+func (cmd GetBalanceCommand) Params() []interface{} {
+	return []interface{}{cmd.Account, cmd.MinConf}
 }

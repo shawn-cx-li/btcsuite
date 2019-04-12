@@ -28,6 +28,14 @@ func (c *Client) GetBalance(account string, minConf int) (btcjson.GetBalanceResu
 	})).Receive()
 }
 
+// GetReceivedByAddress gets the balance of a specific address, including watch-only
+func (c *Client) GetReceivedByAddress(address string, minConf int) (btcjson.GetreceivedbyaddressResult, error) {
+	return futureGetBalance(c.do(btcjson.GetreceivedbyaddressCommand{
+		Address: address,
+		MinConf: minConf,
+	})).Receive()
+}
+
 func (c *Client) ValidateAddress(addr string) (btcjson.ValidateAddressResult, error) {
 	return futureValidateAddress(c.do(btcjson.ValidateAddressCommand{
 		Address: addr,
