@@ -76,8 +76,11 @@ func (c *Client) GetBlockChainInfo() (btcjson.GetBlockChainInfoResult, error) {
 	return futureGetBlockChainInfo(c.do(btcjson.GetBlockChainInfoCommand{})).Receive()
 }
 
-func (c *Client) ListUnspent(cmd btcjson.ListUnspentCommand) (btcjson.ListUnspentResult, error) {
-	return futureListUnspent(c.do(cmd)).Receive()
+func (c *Client) ListUnspent(min int, addresses []string) (btcjson.ListUnspentResult, error) {
+	return futureListUnspent(c.do(btcjson.ListUnspentCommand{
+		Min:       min,
+		Addresses: addresses,
+	})).Receive()
 }
 
 func (c *Client) CreateRawTransaction(cmd btcjson.CreateRawTransactionCommand) (btcjson.CreateRawTransactionResult, error) {
