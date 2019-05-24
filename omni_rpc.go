@@ -1,7 +1,7 @@
 package btcsuite
 
 import (
-	"gitlab.com/sdce/btcsuite/omnijson"
+	"github.com/shawn-cx-li/btcsuite/omnijson"
 )
 
 /*

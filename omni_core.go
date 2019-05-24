@@ -3,7 +3,7 @@ package btcsuite
 import (
 	"encoding/json"
 
-	"gitlab.com/sdce/btcsuite/omnijson"
+	"github.com/shawn-cx-li/btcsuite/omnijson"
 )
 
 type futureOmniCreatePayloadSimpleSend chan *response

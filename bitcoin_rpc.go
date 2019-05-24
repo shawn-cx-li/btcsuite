@@ -1,7 +1,7 @@
 package btcsuite
 
 import (
-	"gitlab.com/sdce/btcsuite/btcjson"
+	"github.com/shawn-cx-li/btcsuite/btcjson"
 )
 
 /*

@@ -3,7 +3,7 @@ package btcsuite
 import (
 	"encoding/json"
 
-	"gitlab.com/sdce/btcsuite/btcjson"
+	"github.com/shawn-cx-li/btcsuite/btcjson"
 )
 
 type futureCreateRawTransaction chan *response
